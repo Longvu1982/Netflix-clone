@@ -1,0 +1,89 @@
+.login__form {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px;
+}
+.login__form .form__container {
+  background-color: rgba(0, 0, 0, 0.64);
+  padding: 60px;
+  width: 100%;
+  max-width: 440px;
+}
+.login__form .form__container form {
+  display: flex;
+  flex-direction: column;
+}
+.login__form .form__container form h1 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+.login__form .form__container form button,
+.login__form .form__container form input {
+  outline: none;
+  border: none;
+}
+.login__form .form__container form input {
+  padding: 0 15px;
+  border-radius: 3px;
+  height: 55px;
+  margin-bottom: 10px;
+  color: #fff;
+  background-color: #333;
+}
+.login__form .form__container form .submit__btn--container {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin: 20px 0;
+  background-color: #ff0900;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.login__form .form__container form .submit__btn--container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 100%;
+  background-color: rgba(65, 65, 65, 0.7450980392);
+  transition: all 0.3s ease-in-out;
+}
+.login__form .form__container form .submit__btn--container:hover {
+  background-color: transparent;
+}
+.login__form .form__container form .submit__btn--container:hover::before {
+  right: 0;
+}
+.login__form .form__container form .submit__btn--container button {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  font-size: 0.9rem;
+  background-color: unset;
+  cursor: pointer;
+}
+.login__form .form__container form .form__extra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #ccc;
+}
+.login__form .form__container form .form__extra a {
+  color: rgba(255, 8, 0, 0.6509803922);
+  cursor: pointer;
+}
+.login__form .form__container form .form__extra a:hover {
+  color: #ff0900;
+}/*# sourceMappingURL=LoginForm.css.map */

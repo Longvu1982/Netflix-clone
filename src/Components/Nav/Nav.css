@@ -1,0 +1,105 @@
+.nav {
+  width: 100%;
+  padding: 30px 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+.nav .nav__logo {
+  cursor: pointer;
+}
+.nav.nav__black {
+  background-color: rgba(17, 17, 17, 0.541);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+.nav .nav__contents {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav .nav__contents .nav__avat {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.nav .nav__contents .nav__avat:hover img {
+  opacity: 0.8;
+}
+.nav .nav__contents .nav__avat img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+.nav .nav__contents .nav__avat .profile-menu {
+  position: absolute;
+  background-color: rgba(38, 38, 38, 0.637);
+  top: 0;
+  right: 0;
+  padding: 30px;
+  padding-right: 40px;
+}
+.nav .nav__contents .nav__avat .profile-menu h1 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns {
+  display: flex;
+  gap: 10px;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns button {
+  position: relative;
+  color: #eee;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  border-radius: 3px;
+  background-color: #111;
+  overflow: hidden;
+  width: 108px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  background-color: rgba(65, 65, 65, 0.7450980392);
+  transition: all 0.4s ease-in-out;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns button span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns button:hover {
+  background-color: transparent;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns button:hover::before {
+  right: 0;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns .profile-logout {
+  background-color: #ff0900;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns .profile-logout:hover {
+  color: #111;
+}
+.nav .nav__contents .nav__avat .profile-menu .profile_btns .profile-logout:hover::before {
+  background-color: rgba(255, 255, 255, 0.555);
+}
+.nav .nav__contents img {
+  height: 40px;
+}/*# sourceMappingURL=Nav.css.map */

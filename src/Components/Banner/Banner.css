@@ -1,0 +1,106 @@
+.banner {
+  position: relative;
+  height: 85vh;
+  margin-bottom: 15vh;
+}
+.banner .banner__content {
+  width: 100%;
+  height: 100%;
+}
+.banner .banner__content .banner_bgr {
+  height: 85vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.banner .banner__overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+}
+.banner .banner__details {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 40px;
+}
+.banner .banner__details .banner--name {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 500;
+  letter-spacing: -3px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.banner .banner__details .banner--btns {
+  display: flex;
+  gap: 10px;
+}
+.banner .banner__details .banner--btns button {
+  position: relative;
+  color: #eee;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  border-radius: 3px;
+  background-color: #111;
+  overflow: hidden;
+  width: 108px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner .banner__details .banner--btns button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 100%;
+  background-color: rgba(65, 65, 65, 0.7450980392);
+  transition: all 0.4s ease-in-out;
+}
+.banner .banner__details .banner--btns button span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner .banner__details .banner--btns button:hover {
+  background-color: transparent;
+}
+.banner .banner__details .banner--btns button:hover::before {
+  right: 0;
+}
+.banner .banner__details .banner--btns .banner--play {
+  background-color: #ff0900;
+}
+.banner .banner__details .banner--btns .banner--play:hover {
+  color: #111;
+}
+.banner .banner__details .banner--btns .banner--play:hover::before {
+  background-color: rgba(255, 255, 255, 0.555);
+}
+.banner .banner__details .banner--dsc {
+  margin-top: 10px;
+  width: 60%;
+  max-width: 340px;
+  text-align: left;
+  color: #eee;
+  font-weight: lighter;
+  font-size: 0.8rem;
+  line-height: 20px;
+  font-weight: 300;
+  height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}/*# sourceMappingURL=Banner.css.map */
