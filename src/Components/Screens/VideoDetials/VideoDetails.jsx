@@ -15,6 +15,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 // redux
 import { useSelector } from "react-redux";
 import { selectUser } from "../../../features/userSlice";
+// import loading
+import PageLoading from "../../Common/Loading/PageLoading";
 
 import "./VideoDetails.css";
 
@@ -48,7 +50,6 @@ function VideoDetails() {
 	}, [isAdded, id, userDocRef]);
 	// Add video id to database
 	const favMovieHandler = () => {
-		
 		userDocRef.get().then((snapshot) => {
 			if (snapshot.exists) {
 				console.log(snapshot.data().fav);
@@ -57,7 +58,8 @@ function VideoDetails() {
 					.doc(user.email)
 					.update({
 						fav: firebase.firestore.FieldValue.arrayUnion(id),
-					}).then(() => setAdded(true));
+					})
+					.then(() => setAdded(true));
 			} else {
 				// setAdded(snapshot.data().fav.includes(id));
 				return db
@@ -65,7 +67,8 @@ function VideoDetails() {
 					.doc(user.email)
 					.set({
 						fav: [id],
-					}).then(() => setAdded(true));
+					})
+					.then(() => setAdded(true));
 			}
 		});
 	};
@@ -74,7 +77,9 @@ function VideoDetails() {
 		<>
 			<Nav />
 			{!detail ? (
-				<h1 className="no_movie">This movie is no longer available!</h1>
+				<div className="loading">
+				<PageLoading />
+			</div>
 			) : (
 				<div className="video__container">
 					<div className="detail__section">
@@ -130,7 +135,9 @@ function VideoDetails() {
 							frameBorder="0"
 						></iframe>
 					</div>
+					{/* <PageLoading /> */}
 				</div>
+				
 			)}
 		</>
 	);

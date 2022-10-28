@@ -13,13 +13,15 @@ import { useNavigate } from "react-router-dom";
 // fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
+import PageLoading from "../../Common/Loading/PageLoading";
 
 function FavMovie() {
 	const [favID, setFavID] = useState([]);
 	const [favList, setFavList] = useState([]);
+	const [isLoaded, setLoaded] = useState(false);
 	const user = useSelector(selectUser);
-    const navigate = useNavigate()
+	const navigate = useNavigate();
 	// Get collection from database
 	useEffect(() => {
 		const userDocRef = db.collection("user").doc(user.email);
@@ -27,7 +29,7 @@ function FavMovie() {
 			if (snapshot.exists) setFavID(snapshot.data().fav);
 		});
 	}, [user.email]);
-
+	
 	// Get movie from id
 	useEffect(() => {
 		favID.forEach((item) => {
@@ -39,6 +41,7 @@ function FavMovie() {
 					const tempArr = [...prev, details.data];
 					return tempArr;
 				});
+				setLoaded(true);
 			};
 			fetchDetails();
 		});
@@ -50,33 +53,44 @@ function FavMovie() {
 		<div className="fav-movie">
 			<Nav />
 			<h1>Explore your favourite movies here!</h1>
-			{favList.length !== 0 ? (
-				<div className="fav-list">
-					{favList.map((item, index) => (
-						<div key={index} className="fav-item" onClick ={()=>{
-                            navigate(`/video/${item.id}`)
-                        }}>
-							<div className="img-container">
-								<LazyLoadImage
-									effect="blur"
-									src={`https://image.tmdb.org/t/p/original${item?.poster_path}`}
-									alt={item.title}
-								/>
-							</div>
-							<div className="fav-detail">
-								<h1 className="">{item?.title || item?.name || item?.original_name || item?.original_title}</h1>
-								<h2>{item?.overview}</h2>
-								<div className="extra">
-									<span className="time">{item ? timeConvert(item.runtime) : ""}</span>
-									<span>{parseFloat(item?.vote_average).toFixed(1)}</span>
-									<FontAwesomeIcon className="icon" icon={faStar} color="yellow" size="xl" />
+
+			{isLoaded ? (
+				favList.length !== 0 ? (
+					<div className="fav-list">
+						{favList.map((item, index) => (
+							<div
+								key={index}
+								className="fav-item"
+								onClick={() => {
+									navigate(`/video/${item.id}`);
+								}}
+							>
+								<div className="img-container">
+									<LazyLoadImage
+										effect="blur"
+										src={`https://image.tmdb.org/t/p/original${item?.poster_path}`}
+										alt={item.title}
+									/>
+								</div>
+								<div className="fav-detail">
+									<h1 className="">{item?.title || item?.name || item?.original_name || item?.original_title}</h1>
+									<h2>{item?.overview}</h2>
+									<div className="extra">
+										<span className="time">{item ? timeConvert(item.runtime) : ""}</span>
+										<span>{parseFloat(item?.vote_average).toFixed(1)}</span>
+										<FontAwesomeIcon className="icon" icon={faStar} color="yellow" size="xl" />
+									</div>
 								</div>
 							</div>
-						</div>
-					))}
-				</div>
+						))}
+					</div>
+				) : (
+					<h1>No movie added to favourite yet!</h1>
+				)
 			) : (
-				<h1>No movie added to favourite yet!</h1>
+				<div className="loading">
+					<PageLoading />
+				</div>
 			)}
 		</div>
 	);

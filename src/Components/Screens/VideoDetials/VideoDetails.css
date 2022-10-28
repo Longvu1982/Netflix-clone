@@ -9,6 +9,14 @@
           user-select: none;
 }
 
+.loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .video__container {
   width: 100%;
   padding: 0 80px;
