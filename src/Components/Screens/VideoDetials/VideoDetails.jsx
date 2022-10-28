@@ -59,7 +59,7 @@ function VideoDetails() {
 						fav: firebase.firestore.FieldValue.arrayUnion(id),
 					}).then(() => setAdded(true));
 			} else {
-				setAdded(snapshot.data().fav.includes(id));
+				// setAdded(snapshot.data().fav.includes(id));
 				return db
 					.collection("user")
 					.doc(user.email)
